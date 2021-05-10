@@ -1,0 +1,22 @@
+python3 -m venv venv
+
+source venv/bin/activate
+
+pip install -r requirements.txt
+
+make a .env file and put this following text there:
+DATABASE_URL=sqlite:///database.db
+
+python app.py
+
+deactivate
+
+
+
+# dotenv
+
+pip install python-dotenv
+
+
+
+

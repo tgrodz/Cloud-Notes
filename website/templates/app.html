@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block body %}
+    <div class="container">
+        <h2 class="fs-2 pb-2">Add A Note</h2>
+        <form action="/app" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Note Title</label>
+                <input name="title" type="text" class="form-control" id="title" />
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">Note Description</label>
+                <input name="description" type="text" class="form-control" id="desc" />
+            </div>
+
+            <button type="submit" class="btn btn-warning">Submit</button>
+        </form>
+    </div>
+    <div class="container my-3 pb-5">
+        <h2 class="fs-2 pb-2">My Notes</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Date created</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if user.notes|length == 0 %}
+                <div class="alert alert-warning" role="alert">
+                    No Note Found. Add your first Note Now!
+                </div>
+                {% else %}
+                {% for note in user.notes %}
+                <tr>
+                    <th scope="row">{{loop.index}}</th>
+                    <td>{{note.title}}</td>
+                    <td>{{note.description}}</td>
+                    <td>{{note.date_created}}</td>
+                    <td>
+                        <a href="/update/{{note.serial}}" type="button" class="btn btn-outline-success">Update</a>
+                        <a href="/delete/{{note.serial}}" type="button" class="btn btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
