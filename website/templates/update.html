@@ -2,20 +2,21 @@
 {% block body %}
 <div class="container">
     <h2 class="fs-2 pb-2">Update A Note</h2>
-    <form action="/update/{{task.serial}}" method="POST">
+    <form action="/update/{{note.serial}}" method="POST">
         <div class="mb-3">
             <label for="title" class="form-label">Note Title</label>
-            <input name="title" value="{{task.title}}" type="text" class="form-control" id="title" />
+            <input name="title" value="{{note.title}}" type="text" class="form-control" id="title" />
         </div>
         <div class="mb-3">
             <label for="desc" class="form-label">Note Description</label>
-            <input name="description" value="{{task.description}}" type="text" class="form-control" id="desc" />
+            <input name="description" value="{{note.description}}" type="text" class="form-control" id="desc" />
         </div>
 
         <button type="submit" class="btn btn-warning">Update</button>
     </form>
 </div>
 {% endblock  %}
+
 {% block footer %}
   <footer>
     <div class="bg-warning align-bottom fixed-bottom text-white text-center p-4">
